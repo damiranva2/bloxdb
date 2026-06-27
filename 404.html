@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="BloxDB is a Roblox game database where players can search games, compare Roblox stats, and read community ratings and reviews." />
+    <link rel="canonical" href="/bloxdb/" />
+    <meta property="og:title" content="BloxDB — Roblox Game Database" />
+    <meta property="og:description" content="Search Roblox games, compare stats, and read BloxDB community ratings and reviews." />
+    <meta name="theme-color" content="#0f1115" />
+    <title>BloxDB — Roblox Game Database</title>
+
+    <!-- Replace this file with your own favicon when it is ready. -->
+    <link rel="icon" href="/bloxdb/favicon.ico" sizes="any" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/bloxdb/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/bloxdb/" aria-label="BloxDB home">BloxDB</a>
+
+        <button class="mobile-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="/bloxdb/" data-nav>Home</a>
+          <a href="/bloxdb/search" data-nav>Search</a>
+          <a href="/bloxdb/most-played" data-nav>Most Played</a>
+          <a href="/bloxdb/top-rated" data-nav>Top Rated</a>
+          <a href="/bloxdb/recently-updated" data-nav>Recently Updated</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="app" tabindex="-1"></main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <a class="brand footer-brand" href="/bloxdb/">BloxDB</a>
+          <p>Unofficial Roblox game database prototype. Roblox stats are separate from BloxDB community ratings. User ratings and reviews sync through the BloxDB community server so every visitor can see the same community score when the free Cloudflare Worker/D1 backend is configured.</p>
+        </div>
+        <div class="footer-links">
+          <a href="/bloxdb/search">Search</a>
+          <a href="/bloxdb/search?sort=visits">Most Visited</a>
+          <a href="/bloxdb/top-rated">Top Rated</a>
+          <a href="/bloxdb/reset-demo">Clear local rating cache</a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script>
+      // All Roblox API requests go through Cloudflare Worker.
+      // Local: run `npm run worker:dev` and keep http://127.0.0.1:8787.
+      // Production/GitHub Pages: replace the placeholder with your deployed Worker URL.
+      const BLOXDB_LOCAL_WORKER_URL = 'http://127.0.0.1:8787';
+      const BLOXDB_PRODUCTION_WORKER_URL = 'https://bloxdb-roblox-api.damiryoubro.workers.dev';
+      window.BLOXDB_BASE_PATH = '/bloxdb'; // GitHub Pages project path: https://damiranva2.github.io/bloxdb
+      window.BLOXDB_CLOUDFLARE_WORKER_URL = ['localhost', '127.0.0.1'].includes(location.hostname)
+        ? BLOXDB_LOCAL_WORKER_URL
+        : BLOXDB_PRODUCTION_WORKER_URL;
+      // Community ratings use the same Worker by default: /api/ratings + Cloudflare D1.
+      window.BLOXDB_COMMUNITY_API_URL = window.BLOXDB_CLOUDFLARE_WORKER_URL;
+    </script>
+    <script type="module" src="/bloxdb/script.js"></script>
+  </body>
+</html>

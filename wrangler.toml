@@ -1,0 +1,10 @@
+name = "bloxdb-roblox-api"
+main = "proxy/cloudflare-worker.js"
+compatibility_date = "2026-06-27"
+
+# Deploy Roblox proxy only:
+#   npx wrangler deploy
+#
+# To enable server-side community ratings, create a Cloudflare D1 database,
+# run db/schema.sql, then copy the [[d1_databases]] block from
+# wrangler.d1.example.toml into this file.

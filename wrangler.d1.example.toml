@@ -1,0 +1,10 @@
+# Copy this block into wrangler.toml after creating a D1 database.
+# Commands:
+#   npx wrangler d1 create bloxdb-community
+#   npx wrangler d1 execute bloxdb-community --local --file db/schema.sql
+#   npx wrangler d1 execute bloxdb-community --remote --file db/schema.sql
+
+[[d1_databases]]
+binding = "DB"
+database_name = "bloxdb-community"
+database_id = "PASTE_YOUR_D1_DATABASE_ID_HERE"

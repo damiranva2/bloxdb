@@ -1,0 +1,16 @@
+{
+  "name": "bloxdb",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "BloxDB — a static Roblox game database prototype with clean URLs, Cloudflare Worker Roblox API integration, and Cloudflare D1 community ratings.",
+  "scripts": {
+    "dev": "node dev-server.js",
+    "start": "node dev-server.js",
+    "worker:dev": "npx wrangler dev --port 8787",
+    "worker:deploy": "npx wrangler deploy"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
