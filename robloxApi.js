@@ -379,7 +379,7 @@ export async function getMediaForGames(games = []) {
     cover: game.universeId ? covers.get(String(game.universeId)) || null : null,
     icon: game.universeId ? icons.get(String(game.universeId)) || null : null,
     mediaSource: game.universeId && (covers.has(String(game.universeId)) || icons.has(String(game.universeId)))
-      ? 'Roblox thumbnails API'
+      ? ''
       : 'Placeholder: Roblox thumbnail unavailable',
   }));
 }
