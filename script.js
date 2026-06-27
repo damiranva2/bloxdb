@@ -420,7 +420,6 @@ async function renderHome() {
       <div><strong>${fullNumber(allGames.length)}</strong><span>Loaded games</span></div>
       <div><strong>${compactNumber(allGames.reduce((sum, game) => sum + game.players, 0))}</strong><span>Active players</span></div>
       <div><strong>${compactNumber(allGames.reduce((sum, game) => sum + game.visits, 0))}</strong><span>Total visits</span></div>
-      <div><strong>${compactNumber(allGames.reduce((sum, game) => sum + getRatingCount(game.id), 0))}</strong><span>BloxDB ratings</span></div>
     </section>
 
     ${sectionTemplate({
@@ -994,7 +993,7 @@ function renderNotFound() {
     <section class="container empty-state page not-found">
       <div class="empty-icon">404</div>
       <h1>Game not found</h1>
-      <p>The BloxDB page you opened does not exist, or this game has not been added to the prototype database yet.</p>
+      <p>The BloxDB page you opened does not exist, or this game has not been added to the database yet.</p>
       <div class="action-row center">
         <a class="btn primary" href="${routeHref('/search')}">Search games</a>
         <a class="btn ghost" href="${routeHref('/')}">Back home</a>
